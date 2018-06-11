@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        function Aaron(List, callback) {
+            setTimeout(function () {
+                var task;
+                if (task = List.shift()) {
+                    task(); //执行函数
+                }
+                if (List.length > 0) { //递归分解
+                    arguments.callee(List)
+                } else {
+                    callback()
+                }
+            }, 25)
+        }
+
+        function show(data) {
+            $("body").append('<li>' + data + '</li>')
+        }
+
+        Aaron([
+            function () {
+                show('a')
+            },
+            function () {
+                show('b')
+            },
+            function () {
+                show('c')
+            }
+        ], function () {
+            show('callback')
+        })
+
+
+        var callbacks = $.Callbacks();
+        callbacks.add(function () {
+            show('callbacksA');
+        })
+        callbacks.add(function () {
+            show('callbacksB');
+        })
+        callbacks.fire();
+
+
+
+    </script>
+
+</body>
+
+</html>
