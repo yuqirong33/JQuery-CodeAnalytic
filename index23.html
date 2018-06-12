@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        function show(data) {
+            $("body").append('<li>' + data + '</li>')
+        }
+
+        function fn1(value) {
+            show(value);
+        }
+
+        function fn2(value) {
+            fn1("fn2 says: " + value);
+            return false;
+        }
+
+        var callbacks = $.Callbacks();
+        callbacks.add(fn1);
+        // outputs: foo!
+        callbacks.fire("foo!");
+        callbacks.add(fn2);
+        // outputs: bar!, fn2 says: bar!
+        callbacks.fire("bar!");
+
+    </script>
+
+</body>
+
+</html>

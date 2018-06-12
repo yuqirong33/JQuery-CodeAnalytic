@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        var optionsCache = {};
+        var rnotwhite = (/\S+/g);
+        // Convert String-formatted options into Object-formatted ones and store in cache
+
+        function show(data) {
+            if (typeof data === 'object') {
+                for (var key in data) {
+                    $("body").append('<li>key->' + key + '; value->' + data[key] + '</li>')
+                }
+            } else {
+                $("body").append('<li>' + data + '</li>')
+            }
+        }
+
+        function createOptions(options) {
+            var object = optionsCache[options] = {};
+            jQuery.each(options.match(rnotwhite) || [], function (_, flag) {
+                object[flag] = true;
+            });
+            return object;
+        }
+
+        function callback(options) {
+            options = typeof options === "string" ?
+                (optionsCache[options] || createOptions(options)) :
+                jQuery.extend({}, options);
+            show(options)
+        }
+
+        callback('once memory')
+
+
+    </script>
+
+</body>
+
+</html>
