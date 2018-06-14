@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <button id="clickme">点击我，会无限循环</button>
+
+    <script type="text/javascript">
+
+        //循环引用
+        function a() {
+            setTimeout(function () {
+                show('a函数执行完毕,没有销毁定时器引用,无法停止')
+                a();
+            }, 500)
+        }
+
+        $("#clickme").click(function () {
+            a();
+        })
+
+
+        function show(data) {
+            $("body").append('<li>' + data + '</li>')
+        }
+
+
+    </script>
+
+</body>
+
+</html>
