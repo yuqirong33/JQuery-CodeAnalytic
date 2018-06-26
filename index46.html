@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <div>
+        <div class="Aaron">
+            <p>
+                <span>s1</span>
+            </p>
+            <p>
+                <span>s2</span>
+            </p>
+            <p>
+                <span>s3</span>
+            </p>
+            <p>
+                <span class='red'>s4</span>
+            </p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        /*  
+          CSS
+          div > div.Aaron p span.red{
+             color:red;
+          }
+        */
+        $('div > div.Aaron p span.red').css('color', 'red')
+
+    </script>
+
+</body>
+
+</html>
